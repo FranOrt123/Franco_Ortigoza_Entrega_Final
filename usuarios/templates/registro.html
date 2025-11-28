@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block titulo_pagina %} Registro {% endblock %}
+{% block contentenido %}
+
+    <form action={% url 'registro' %} method="post" translate="no">
+        {% csrf_token %}
+        {{ formulario}}   
+ 
+        <input type="submit" value="Registrarce">
+    </form>
+
+{% endblock %} 

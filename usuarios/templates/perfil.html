@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titulo_pagina %} Acerca de mí {% endblock %}
+{% block contentenido %}
+
+<h1>Acerca de mí</h1>
+
+<pre>
+    Soy Franco Ortigoza, tengo 21 años y vivo en Lomas de Zamora, buenos Aires.
+    Estoy en mi tercer año de Ingeniería en Sistemas en la UTN.
+    Por ahora no estoy trabajando, pero estoy enfocado en seguir formándome, por eso me anoté en un curso extra,
+    para sumar más conocimientos y experiencia que me sirvan a futuro.
+</pre>
+<br>
+<a href="{% url 'inicio' %}">Volver al inicio</a>
+
+{% endblock %}

@@ -4,6 +4,8 @@ from inicio.models import Camiseta
 from inicio.forms import CrearCamisetas, BuscarCamisetas
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     return render(request, "inicio.html")
@@ -11,6 +13,7 @@ def inicio(request):
 def otra(request):
     return render(request, "otra.html")
 
+@login_required
 def crear_camiseta(request):
     if request.method == "POST":
         formulario = CrearCamisetas(request.POST)
@@ -44,13 +47,13 @@ def ver_camiseta(request, id):
     return render(request, "ver_camiseta.html", {'camiseta': camiseta})
 
 
-class EditarCamisetas(UpdateView):
+class EditarCamisetas(LoginRequiredMixin, UpdateView):
     model = Camiseta
     template_name = "editar_camiseta.html"
     fields = ['club', 'modelo', 'talle']        
     success_url = reverse_lazy('listado')
 
-class EliminarCamisetas(DeleteView):
+class EliminarCamisetas(LoginRequiredMixin, DeleteView):
     model = Camiseta
     template_name = "eliminar_camiseta.html"
     success_url = reverse_lazy('listado')
