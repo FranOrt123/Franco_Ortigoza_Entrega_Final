@@ -2,7 +2,7 @@
 {% block titulo_pagina %} Editar Camiseta {% endblock %}
 {% block contentenido %}
 
-    <form action={% url 'editar' camiseta.id %} method="post" translate="no">
+    <form action={% url 'editar' camiseta.id %} method="post" enctype="multipart/form-data" translate="no">
         {% csrf_token %}
         {{ form}}   
  

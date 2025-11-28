@@ -2,7 +2,7 @@
 {% block titulo_pagina %} Creacion de Camisetas {% endblock %}
 {% block contentenido %}
 
-    <form action={% url 'crear' %} method="post" translate="no">
+    <form action={% url 'crear' %} method="post" enctype="multipart/form-data" translate="no">
         {% csrf_token %}
         {{ formulario}}   
  

@@ -11,5 +11,10 @@
     <li translate="no">
         Talle:{{camiseta.talle}}
     </li>
+    {% if camiseta.imagen %}
+    <li>
+        Imagen: <img src="{{camiseta.imagen.url}}" alt="Imagen de la camiseta">
+    </li>
+    {% endif %}
 </ul>
 {% endblock %}

@@ -16,11 +16,11 @@ def otra(request):
 @login_required
 def crear_camiseta(request):
     if request.method == "POST":
-        formulario = CrearCamisetas(request.POST)
+        formulario = CrearCamisetas(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
         
-            camiseta = Camiseta(club=info.get("club"), modelo=info.get("modelo"), talle=info.get("talle"))
+            camiseta = Camiseta(club=info.get("club"), modelo=info.get("modelo"), talle=info.get("talle"), imagen=info.get("imagen"))
             camiseta.save()
 
             return redirect("listado")
@@ -50,7 +50,7 @@ def ver_camiseta(request, id):
 class EditarCamisetas(LoginRequiredMixin, UpdateView):
     model = Camiseta
     template_name = "editar_camiseta.html"
-    fields = ['club', 'modelo', 'talle']        
+    fields = "__all__"       
     success_url = reverse_lazy('listado')
 
 class EliminarCamisetas(LoginRequiredMixin, DeleteView):
